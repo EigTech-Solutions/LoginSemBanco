@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,6 +28,13 @@ public class Validacao {
 
         Boolean logar = false;
 
+        LocalDate data = LocalDate.now();
+        LocalTime hora = LocalTime.now();
+
+        DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter horarioFormatado = DateTimeFormatter.ofPattern("HH:mm");
+
+
         System.out.println("""
                 ------------------------------
                 |          EigTech           |
@@ -45,15 +56,18 @@ public class Validacao {
         }
 
         if(logar){
-            System.out.println("""
+            System.out.printf("""
                     ------------------------------
-                    |        Bem Vindo           |
+                    |         Bem Vindo          |
+                    |      Você está logando     |
+                    |       no nosso sistema     |
+                    | ás %s do dia %s | 
                     ------------------------------
-                    """);
+                    """,horarioFormatado.format(hora) , dataFormatada.format(data));
         } else {
             System.out.println("""
                     ------------------------------
-                    |Usuário ou senha incorretos |
+                    |Email ou senha incorretos |
                     ------------------------------
                     """);
         }
